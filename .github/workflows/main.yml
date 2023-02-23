@@ -1,9 +1,7 @@
 name: Playwright Tests
 on:
-  push:
-    branches: [main, master]
-  pull_request:
-    branches: [main, master]
+  schedule:
+    - cron: "*/60 * * * *"
 jobs:
   test:
     timeout-minutes: 60
@@ -23,5 +21,5 @@ jobs:
         if: failure()
         with:
           to: 'm.palmowski@freshpixels.pl'
-          subject: 'building main'
-          body: 'This is a notification from GitHub actions.'
+          subject: 'KUP ROWER!!'
+          body: 'Rower jest dostępny - kupuj.'
