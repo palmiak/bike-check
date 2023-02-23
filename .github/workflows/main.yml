@@ -17,9 +17,11 @@ jobs:
         run: npx playwright install chromium
       - name: Run Playwright tests
         run: npx playwright test
-      - uses: cinotify/github-action@main
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
         if: failure()
         with:
-          to: 'm.palmowski@freshpixels.pl'
-          subject: 'KUP ROWER!!'
-          body: 'Rower jest dostępny - kupuj.'
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+           ROWER DOSTĘPNY https://www.canyon.com/pl-pl/gravel-bikes/bike-packing/grizl/al/grizl-6/2708.html?dwvar_2708_pv_rahmenfarbe=GN
